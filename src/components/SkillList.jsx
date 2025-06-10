@@ -2,21 +2,21 @@ import PropTypes from "prop-types";
 
 const skills = {
   languages: [
-    { name: "C", path: "./assets/c.png" },
-    { name: "C++", path: "./assets/cpp.png" },
-    { name: "Python", path: "./assets/python.png" },
-    { name: "HTML", path: "./assets/html.png" },
-    { name: "JavaScript", path: "./assets/js.png" },
+    { name: "C", path: "/assets/c.png" },
+    { name: "C++", path: "/assets/cpp.png" },
+    { name: "Python", path: "/assets/python.png" },
+    { name: "HTML", path: "/assets/html.png" },
+    { name: "JavaScript", path: "/assets/js.png" },
   ],
   fworks: [
-    { name: "CSS", path: "./assets/css.png" },
-    { name: "PyTorch", path: "./assets/pytorch.png" },
-    { name: "TensorFlow", path: "./assets/tf.png" },
-    { name: "NumPy", path: "./assets/numpy.png" },
-    { name: "pandas", path: "./assets/pandas.png" },
-    { name: "Matplotlib", path: "./assets/plt.png" },
-    { name: "Node.js", path: "./assets/nodejs.png" },
-    { name: "React.js", path: "./assets/react.png" },
+    { name: "CSS", path: "/assets/css.png" },
+    { name: "PyTorch", path: "/assets/pytorch.png" },
+    { name: "TensorFlow", path: "/assets/tf.png" },
+    { name: "NumPy", path: "/assets/numpy.png" },
+    { name: "pandas", path: "/assets/pandas.png" },
+    { name: "Matplotlib", path: "/assets/plt.png" },
+    { name: "Node.js", path: "/assets/nodejs.png" },
+    { name: "React.js", path: "/assets/react.png" },
   ]
 };
 
