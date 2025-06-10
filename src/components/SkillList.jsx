@@ -1,37 +1,32 @@
-/* eslint-disable no-unused-vars */
-import { useState } from "react";
 import PropTypes from "prop-types";
-import Divider from '@mui/material/Divider';
 
 const langsImages = [
-  { name: "C", path: "./public/assets/c.png" },
-  { name: "C++", path: "./public/assets/cpp.png" },
-  { name: "Python", path: "./public/assets/python.png" },
-  { name: "HTML", path: "./public/assets/html.png" },
-  { name: "JavaScript", path: "./public/assets/js.png" },
+  { name: "C", path: "./assets/c.png" },
+  { name: "C++", path: "./assets/cpp.png" },
+  { name: "Python", path: "./assets/python.png" },
+  { name: "HTML", path: "./assets/html.png" },
+  { name: "JavaScript", path: "./assets/js.png" },
 ];
 
 const fworksImages = [
-  { name: "CSS", path: "./public/assets/css.png" },
-  { name: "PyTorch", path: "./public/assets/pytorch.png" },
-  { name: "TensorFlow", path: "./public/assets/tf.png" },
-  { name: "NumPy", path: "./public/assets/numpy.png" },
-  { name: "pandas", path: "./public/assets/pandas.png" },
-  { name: "Matplotlib", path: "./public/assets/plt.png" },
-  { name: "Node.js", path: "./public/assets/nodejs.png" },
-  { name: "React.js", path: "./public/assets/react.png" },
+  { name: "CSS", path: "./assets/css.png" },
+  { name: "PyTorch", path: "./assets/pytorch.png" },
+  { name: "TensorFlow", path: "./assets/tf.png" },
+  { name: "NumPy", path: "./assets/numpy.png" },
+  { name: "pandas", path: "./assets/pandas.png" },
+  { name: "Matplotlib", path: "./assets/plt.png" },
+  { name: "Node.js", path: "./assets/nodejs.png" },
+  { name: "React.js", path: "./assets/react.png" },
 ];
 
 function displayList(list, typeSkill) {
-  return list.map((element, index) => {
-
-    const delay = typeSkill === "languages" ? `calc(25s / ${list.length} * (${list.length} - ${index}) * -1)` : "0s";
-
+  return list.map((element, index) => {    
+    const num = typeSkill === "languages" ? 25 : 60;
+    const delay = `calc(${num}s / ${list.length} * (${list.length} - ${index}) * -1)`;
     return (
       <div 
-        key={index} 
-        className={`skill-div ${element.name.replace("+", "p").toLowerCase()}`}
-        id={typeSkill} 
+        key={element.name} 
+        className={`skill-div ${element.name.replace("+", "p").toLowerCase()} ${typeSkill}`}
         data-content={element.name}
         style={{animationDelay: delay}}
       >
@@ -42,7 +37,6 @@ function displayList(list, typeSkill) {
 }
 
 function SkillList(props) {
-
   const lview = {
     display: "flex",
     flexDirection: "row",
@@ -56,19 +50,18 @@ function SkillList(props) {
     rowGap: "2.5rem",
   }
 
-  if (props.type === "languages") {
+ if (props.type === "languages") {
     return (
-      <div style={lview} id="languages-list">
+      <div id="languages-list" style={lview}>
         {displayList(langsImages, props.type)}
       </div>
     )
-  } 
-  else if (props.type === "fworks") {
+  } else if (props.type === "fworks") {
     return (
-      <div style={fview} id="fworks-list">
+      <div id="fworks-list" style={fview}>
         {displayList(fworksImages, props.type)}
       </div>
-      )
+    )
   }
 }
 

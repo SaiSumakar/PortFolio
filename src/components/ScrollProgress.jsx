@@ -1,6 +1,15 @@
 import { useState, useEffect } from "react";
 
-function ScrollProgressIndicator() {
+const scrollStyles = {
+  fontFamily: "Chewie, sans-serif",
+  fontSize: "1.1rem",
+  width: "42px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+}
+
+function ScrollProgress() {
   const [scrollPercentage, setScrollPercentage] = useState(0);
 
   const updateScrollProgress = () => {
@@ -16,10 +25,10 @@ function ScrollProgressIndicator() {
   }, []);
 
   return (
-    <div>
+    <div style={scrollStyles}>
       {Math.round(scrollPercentage)}%
     </div>
   );
 }
 
-export default ScrollProgressIndicator;
+export default ScrollProgress;

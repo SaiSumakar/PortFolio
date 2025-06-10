@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap');
-
-@font-face {
-  font-family: "Against";
-  src: url("../public/fonts/against_2/against_regular.otf") format("opentype");
-}
-
 @font-face {
   font-family: "Louis Walter";
   src: url("../public/fonts/louis-walter-font/LouisWalterRegular-yYjJV.ttf") format("opentype");
+  font-weight: 400;
+}
+@font-face{
+  font-family: "Chewie";
+  src: url("../public/fonts/chewie/ChewieDEMO-Regular.otf") format("opentype");
   font-weight: 400;
 }
 
@@ -23,40 +20,37 @@ html {
   padding: 0;
 }
 
+
 :root {
-  --text-color: #FCF6EA;
-  --selection-color: #171819; 
-  --selection-bg: #FCF6EA; 
+  --color1: #11120e;
+  --color2: #dbd0d5;
+  --font: "Chewie", sans-serif;
 }
 
-::selection {
-  color: var(--selection-color);
-  background-color: var(--selection-bg);
+.section:nth-of-type(odd)::selection {
+  color: var(--color2);
+  background-color: var(--color1);
 }
 
+.section:nth-of-type(even)::selection {
+  color: var(--color1);
+  background-color: var(--color2);
+}
 
-body{
-  background-color: #FCF6EA;
+.section:nth-of-type(odd) {
+  background-color: var(--color2);
+  color: var(--color1);
+  box-shadow: 0 -25px 35px rgba(255, 255, 255, 0.2);
+}
+
+.section:nth-of-type(even) {
+  background-color: var(--color1);
+  color: var(--color2);
+  box-shadow: 0 -25px 35px rgba(0, 0, 0, 0.3);
 }
 
 body::-webkit-scrollbar{
   display: none;
-}
-
-.black-background {
-  background-color: #171819;
-}
-
-.white-background {
-  background-color: #FCF6EA;
-}
-
-.black-text {
-  color: #202022;
-}
-
-.white-text {
-  color: #FCF6EA;
 }
 
 /* NAV BAR */
@@ -68,20 +62,9 @@ body::-webkit-scrollbar{
   z-index: 10;
   width: 100%;
   backdrop-filter: blur(2px);
-  padding: 0.5rem 2.5rem 0.6rem 0.9rem;
+  padding: 1rem 2.5rem 0.6rem 0.9rem;
   transition: color 0.4s ease-out;
   box-sizing: border-box;
-}
-
-.logo{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.svglogo path{
-  transition: fill 0.4s ease-out;
 }
 
 .navlinks{
@@ -92,7 +75,7 @@ body::-webkit-scrollbar{
 }
 
 #scrollPercentage{
-  font-family: "Parkinsans", sans-serif;
+  font-family: var(--font);
   font-size: 1.1rem;
   width: 42px;
   display: flex;
@@ -105,7 +88,6 @@ body::-webkit-scrollbar{
   padding-top: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
   height: 100vh;
   width: 100%;
 }
@@ -118,31 +100,38 @@ body::-webkit-scrollbar{
 
 .hero-image img{
   position: relative;
-  width: 82%; 
+  height: 75%;
+  width: 69%; 
+  margin-left: 5rem;
   object-fit: cover; 
   display: flex;
+  border-radius: 50%;
+  border: 4px solid var(--color2);
+  transform: rotate(-1deg);
+  box-shadow: 0 0 20px rgba(200, 200, 200, 0.6);
 }
 
 .hero-text{
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 0 50px 80px 50px;
+  padding: 0 0 0 3rem;
+  gap: 2rem;
 }
 
 .hero-title {
-  font-family: "Against";
-  font-size: 2.75rem;
+  font-family: var(--font);
+  font-size: 3.5rem;
 }
 
 .hero-text-style{
   font-family: "Louis Walter";
   font-size: 10rem;
-  letter-spacing: 10px;
+  letter-spacing: 5px;
   width: fit-content;
   display: flex;
   opacity: 0;
-  color: #D6DC82;
+  /* color: #D6DC82; */
 }
 
 @keyframes fadeInLtr{
@@ -168,7 +157,40 @@ body::-webkit-scrollbar{
 }
 
 /* ABOUT-PAGE */
-/* ALL CSS is in hscrolls.css */
+.aboutpage{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 3rem;
+  height: 100vh;
+  position: relative;
+  gap: 3rem;
+}
+
+.aboutme{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-family: var(--font);
+  font-size: 7rem;
+  height: 100%;
+}
+
+.about-description{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-family: var(--font);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  text-align: justify;
+  border-right: 2px solid var(--color1);
+  padding-right: 4rem;
+}
+
 
 /* PROJECTS PAGE */
 #projects-page{
@@ -177,102 +199,115 @@ body::-webkit-scrollbar{
 }
 
 .projects-title{
-  font-family: "Faculty Glyphic", sans-serif;
-  font-size: 3.5rem;
+  font-family: var(--font);
+  font-size: 3.8rem;
   text-align: center;
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
 }
 
-.project{
-  border: 1px outset #d1d3ab;
+.project {
+  position: relative;
+  overflow: hidden;
+  border: 1px outset var(--color2);
   border-radius: 10px;
   padding: 50px 70px;
   display: grid;
-  box-shadow: 4px 4px 20px 1px #676953;
+  box-shadow: 1px 2px 15px 0 #A9A9A9;
+  --x: 50%;
+  --y: 50%;
+  --spotlight-alpha: 0; 
+}
+
+.project::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: screen;   
+  background: radial-gradient(
+    circle at var(--x) var(--y),
+    rgba(169, 169, 169, 0.15) 0%,
+    rgba(169, 169, 169, 0.15) 15%,
+    transparent 50%
+  );
+  opacity: var(--spotlight-alpha);
+  transition: opacity 0.3s ease-in-out;
+  z-index: 0;
+}
+
+.project:hover {
+  --spotlight-alpha: 1;
+}
+
+.project > * {
+  position: relative;
+  z-index: 1;
 }
 
 .project-title{
-  font-family: "Faculty Glyphic", sans-serif;
+  font-family: var(--font);
   padding-bottom: 20px;
+  font-size: 1.6rem;
 }
 
 .project-description{
-  font-family: "Faculty Glyphic", sans-serif;
-  font-size: 1.1rem;
+  font-family: var(--font);
+  font-size: 1.15rem;
   opacity: 0.7;
   text-align: justify;
   padding-top: 20px;
   list-style-type: "◆ ";
 }
 
+/* .arrow-icon{
+  opacity: 0;
+  transform: translateX(-10px) scale(0.5);
+  transition: opacity 0.1s, transform 0.2s;
+} */
+
 /* SKILLS PAGE */
+#skills-page{
+  scroll-margin-top: 6vh;
+}
+
 .languages-container{
   display: grid;
   grid-template-columns: 3fr 10fr;
-  padding: 9rem 25px 6rem 25px;
+  padding: 6rem 0 3rem 0;
 }
 
 .langs-title{
   place-self: center;
-  font-family: "Against";
-  font-size: 1.6rem; 
+  font-family: var(--font);
+  font-size: 1.8rem; 
   position: relative;
-  padding: 3px;
-}
-
- .langs-title::before{
-  position: absolute;
-  content: '';
-  background-color: #171819;
-  left: 50%;
-  bottom: 0;
-  height: 2px;
-  width: 20%;
-  opacity: 1;
-  transition: width 0.3s ease;
-  transform: translateX(-50%);
-} 
-
-.langs-title:hover::before{
-  width: 100%;
+  padding: 3px 3px 0 3px;
+  border-bottom: 2px solid var(--color1);
 }
 
 .frameworks-container{
   display: grid;
   grid-template-columns: 3fr 10fr;
-  column-gap: 10px;
-  padding: 6rem 25px 9rem 25px;
+  padding: 3rem 0 6rem 0;
 }
 
 .fws-title{
-  justify-self: center;
+  place-self: center;
   height: fit-content;
-  font-family: "Against";
-  font-size: 1.6rem;
+  font-family: var(--font);
+  font-size: 1.8rem;
   position: relative;
-  padding: 3px;
-}
-
-.fws-title::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 20%;
-  height: 2px;
-  background-color: #171819;
-  transform: translateX(-50%);
-  transition: width 0.3s ease;
-}
-
-.fws-title:hover::after {
-  width: 100%;
+  padding: 3px 3px 0 3px;
+  border-bottom: 2px solid var(--color1);
 }
 
 .skill-div {
   display: flex;
   place-self: center;
-  position: relative; 
+  position: relative;  
 }
 
 .skill {
@@ -291,7 +326,7 @@ body::-webkit-scrollbar{
   bottom: -35px; 
   left: 50%;
   transform: translateX(-50%);
-  font-family: "Parkinsans";
+  font-family: "Faculty Glyphic", sans-serif;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 18px;
@@ -304,23 +339,25 @@ body::-webkit-scrollbar{
   transform: translateX(-50%) translateY(-6px);
 }
 
-#languages-list{
+#languages-list,
+#fworks-list {
   padding: 20px 0;
   max-width: 1536px;
   margin-inline: auto;
-  display: flex;
-  align-items: center;
-  overflow: hidden; 
+  overflow: hidden;
   position: relative;
   height: 130px;
-  mask-image: linear-gradient(to right,
-    rgba(0,  0, 0, 0),
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 1) 18%,
     rgba(0, 0, 0, 1) 82%,
-    rgba(0, 0, 0, 0));
+    rgba(0, 0, 0, 0)
+  );
+  width: 100%;
 }
 
-#languages{
+.languages{
   position: absolute;
   animation: scrollLeft 25s linear 0s infinite;
   left: max((100px * 5), 100%);
@@ -330,11 +367,27 @@ body::-webkit-scrollbar{
   align-items: center;
 }
 
- @keyframes scrollLeft{
+.fworks{
+  position: absolute;
+  animation: scrollRight 60s linear 0s infinite;
+  left: -800px;
+  transition: transform 0.3s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes scrollLeft{
   to{
     left: -100px;
   }
 } 
+
+@keyframes scrollRight{
+  to{
+    left: 100%;
+  }
+}
 
 /* CONTACT-PAGE */
 #contact-page{
@@ -342,24 +395,39 @@ body::-webkit-scrollbar{
   flex-direction: column;
   width: 100%;
   justify-content: center;
-  gap: 3rem;
   align-items: center;
-  padding-top: 8rem;
+  padding-top: 7.4rem;
+  overflow: hidden;
+  position: relative;
+}
+
+#contact-aurora{
+  position: absolute;
+  transform: scaleY(-1);
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
 }
 
 #socials{
   width: 95%;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-title{
   display: flex;
   flex-direction: column;
   width: 95%;
+  z-index: 10;
+  margin-bottom: 4rem;
 }
 
 #contact-page h2{
-  font-size: 8.5rem;
-  font-family: "Faculty Glyphic", sans-serif;
+  font-size: 8rem;
+  font-family: var(--font);
 }
 
 .mail-title{
@@ -370,14 +438,13 @@ body::-webkit-scrollbar{
   display: flex;
   text-decoration: none;
   place-self: center;
-  font-family: "Faculty Glyphic", sans-serif;
+  font-family: var(--font);
   font-size: 1.5rem;
   opacity: 0.8; 
 }
 
 .mailhead a{
   text-decoration: none;
-  color: #FCF6EA;
 }
 
 .mailhead a::before{
@@ -387,11 +454,12 @@ body::-webkit-scrollbar{
 .linksConatiner{
   display: flex;
   height: 100%;
-  width: 100%;
+  width: 95%;
   justify-content: space-evenly;
   align-items: center;
-  border-top: 2px solid #FCF6EA;
-  padding: 50px 0;
+  border-top: 2px solid var(--color2);
+  padding: 50px 0 40px 0;
+  z-index: 2;
 }
 
 .socialLinks{
@@ -402,25 +470,26 @@ body::-webkit-scrollbar{
 }
 
 .socials-title{
-  font-family: "Faculty Glyphic", sans-serif;
+  font-family: var(--font);
   align-self: center;
   text-align: right;
   opacity: 0.9; 
-  font-family: "Against";
-  font-size: 0.875rem;
+  font-size: 0.975rem;
+  border-bottom: 1px solid var(--color2);
 }
 
 .mail-title{
-  font-family: "Against";
+  font-family: var(--font);
   place-self: center; 
   transform: translateX(20%);
-  font-size: 0.875rem;
+  font-size: 0.975rem;
+  border-bottom: 1px solid var(--color2);
 }
 
  .social-link{
-  font-family: "Faculty Glyphic", sans-serif;
+  font-family: var(--font);
   text-decoration: none;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   padding: 5px;
   display: flex;
   color: #FCF6EA;
@@ -458,7 +527,84 @@ body::-webkit-scrollbar{
 /* Footer */
 .copyright{
   text-align: center;
-  padding: 0 10px 10px 10px;
-  font-family: "Parkinsans", sans-serif;
+  font-family: var(--font);
+  padding-top: 1rem;
   font-size: 0.875rem;
+  z-index: 1;
+  background-color: transparent;
 }
+
+/* 
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;  
+    text-align: center;      
+    padding: 2rem 1rem;                
+  }
+  .hero-image img {
+    margin: 0 auto;                  
+    width: 50%; height: auto;          
+  }
+  .hero-text-style {
+    font-size: clamp(6rem, 10vw, 10rem); 
+  }
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem 1rem;              
+  }
+  .aboutpage {
+    flex-direction: column;           
+    padding: 2rem 1rem;                
+    gap: 2rem;
+    text-align: center;
+  }
+  .about-description {
+    border-right: none;                
+    padding: 0;                        
+  }
+  #projects-page {
+    padding: 1.5rem 1rem 3rem;
+  }
+  .projects-title {
+    font-size: 2.5rem;
+  }
+  .project {
+    padding: 30px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 14px; }           
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .aboutme {
+    font-size: 4rem;
+  }
+  .about-description {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+  #skills-page {
+    padding: 2rem 0.5rem;
+  }
+  #languages-list,
+  #fworks-list {
+    mask-image: none;                 
+  }
+  #contact-page h2 {
+    font-size: 4rem;
+  }
+  .mailhead,
+  .socials-title,
+  .mail-title {
+    font-size: 1rem;
+  }
+}
+ */
+
+
+ 

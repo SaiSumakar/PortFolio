@@ -5,7 +5,7 @@ function animateLetter(){
   const letters = document.querySelectorAll('.hero-text-style');
   letters.forEach((ltr, idx) => {
     ltr.classList.add('animateLtr')
-    ltr.style.animationDelay = `${idx * 0.1}s`;
+    ltr.style.animationDelay = `${idx * 0.04}s`;
   })
 }
 

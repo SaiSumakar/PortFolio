@@ -2,9 +2,7 @@ import { useState } from "react"
 import PropTypes from "prop-types";
 
 function Navlink(props) {
-
   const [isHovered, setHover] = useState(false);
-
   const linkStyle = {
     textDecoration: "none",
     fontFamily: "Faculty Glyphic, sans-serif",
@@ -23,7 +21,7 @@ function Navlink(props) {
 
   return (
     <div onMouseOver={onHover} onMouseOut={offHover} className="hovered"> 
-      <a href={props.to} style={linkStyle} data-link={props.text}> {props.text} </a> 
+      <a href={props.to} style={linkStyle} data-link={props.text} >{props.text} </a> 
     </div>
   )
 }

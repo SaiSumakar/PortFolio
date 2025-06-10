@@ -1,145 +1,66 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import Navbar from './components/Navbar';
-import Name from './components/Name';
-import HorizontalScroll from './components/HorizontalScroll';
+import Hero from './components/Hero';
+import AboutPage from './components/AboutPage';
 import Projects from './components/Projects';
-import SkillList from './components/SkillList';
-import Socials from './components/Socials';
-import Clock from './components/Clock';
-import ScrollProgress from './components/ScrollProgress';
+import ContactPage from './components/ContactPage';
+import Aurora from './components/Aurora';
+import SkillsPage from './components/SkillsPage';
 
+const navlinks = document.querySelector('.navbar');
+ReactDOM.createRoot(navlinks).render(<StrictMode><Navbar /></StrictMode>);
 
-const navlinks = document.querySelector('.navlinks');
-const navBody = ReactDOM.createRoot(navlinks);
-navBody.render(<StrictMode><Navbar /></StrictMode>);
+const heroText = document.querySelector('.hero');
+ReactDOM.createRoot(heroText).render(<StrictMode><Hero /></StrictMode>);
 
-const clock = document.querySelector('#clock');
-const clockBody = ReactDOM.createRoot(clock);
-clockBody.render(<StrictMode><Clock /></StrictMode>);
-
-const scroll = document.querySelector('#scrollPercentage');
-const scrollBody = ReactDOM.createRoot(scroll);
-scrollBody.render(<StrictMode><ScrollProgress /></StrictMode>);
-
-const heroText = document.querySelector('.hero-text');
-const heroBody = ReactDOM.createRoot(heroText);
-heroBody.render(<StrictMode><Name /></StrictMode>);
-
-const hscroll = document.querySelector('.hscroll');
-const hscrollBody = ReactDOM.createRoot(hscroll);
-hscrollBody.render(<StrictMode><HorizontalScroll /></StrictMode>);
+const aboutpage = document.querySelector('#about-page');
+ReactDOM.createRoot(aboutpage).render(<StrictMode><AboutPage /></StrictMode>);
 
 const projects = document.querySelector('#projects');
-const projectBody = ReactDOM.createRoot(projects);
-projectBody.render(<StrictMode><Projects /></StrictMode>);
+ReactDOM.createRoot(projects).render(<StrictMode><Projects /></StrictMode>);
 
-const langs = document.querySelector('#langs');
-const langsBody = ReactDOM.createRoot(langs);
-langsBody.render(<StrictMode><SkillList type="languages"/></StrictMode>);
+const skillsPage = document.getElementById("skills-page");
+ReactDOM.createRoot(skillsPage).render(<StrictMode><SkillsPage /></StrictMode>);
 
-const fworks = document.querySelector('#fws');
-const fworksBody = ReactDOM.createRoot(fworks);
-fworksBody.render(<StrictMode><SkillList type="fworks"/></StrictMode>);
+const contactPage = document.querySelector("#contact-page");
+ReactDOM.createRoot(contactPage).render(<StrictMode><ContactPage /></StrictMode>);
 
-const socials = document.querySelector("#socials");
-const socialsBody = ReactDOM.createRoot(socials);
-socialsBody.render(<StrictMode><Socials /></StrictMode>);
+const colors =  ["#2D2E2E", "#616161", "#A9A9A9"]
+// const colors =   ["#2D2E2E", "#6D99AE", "#1F233C"]
+// const colors = ["#3A29FF", "#FF94B4", "#FF3232"]
 
-const copyright = document.querySelector('.copyright');
-const copyrightBody = ReactDOM.createRoot(copyright);
-const year = new Date().getFullYear();
-copyrightBody.render(<StrictMode>© {year} Sai Sumakar</StrictMode>)
-
-function setPathColor(paths, color){
-  paths.map((path) => {
-    path.setAttribute('fill', color);
-  })
-}
+const landing = document.querySelector('.landing-aurora');
+const landingBody = ReactDOM.createRoot(landing);
+landingBody.render(
+  <StrictMode>
+    <Aurora
+      colorStops={colors}
+      blend={0.5}
+      amplitude={1.0}
+      speed={0.7}
+    />
+  </StrictMode>
+)
 
 function changeNavBarColor(){
   const navbar = document.querySelector('.navbar');
   const sections = document.querySelectorAll('.section');
-  const logoPaths = [...document.querySelectorAll('.svglogo path')]
-  console.log(logoPaths)
 
   window.addEventListener('scroll', () => {
     let currentSection = null;
-    
     sections.forEach((section) => {
       const rect = section.getBoundingClientRect();
-      if (rect.top <= 35 && rect.bottom > -35) {
+      if (rect.top <= 30 && rect.bottom > -25){
         currentSection = section;
       }
     });
     
     if (currentSection && currentSection.classList.contains('white-background')) {
-      navbar.style.color = 'black';
-      setPathColor(logoPaths, 'black')
+      navbar.style.color = '#11120e'; 
     } else if (currentSection && currentSection.classList.contains('black-background')) {
-      navbar.style.color = 'white';
-      setPathColor(logoPaths, 'white')
-    }
-    else if(currentSection && currentSection.classList.contains('hscroll')){
-      navbar.style.color = 'black';
-      setPathColor(logoPaths, 'black')
+      navbar.style.color = '#dbd0d5';
     }
   });
 }
 changeNavBarColor();
-
-function updateSelectionStyles() {
-  const sections = [...document.querySelectorAll(".section")]
-  sections.forEach((sec) => {
-    const textColor = getComputedStyle(sec).color
-    const isWhite = textColor === "rgb(252, 246, 234)"
-    if (isWhite) {
-      sec.style.setProperty("--selection-color", "#171819");
-      sec.style.setProperty("--selection-bg", "#FCF6EA");
-    } else {
-      sec.style.setProperty("--selection-color", "#FCF6EA");
-      sec.style.setProperty("--selection-bg", "#171819");
-    }
-  })
-}
-
-updateSelectionStyles();/*
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Navbar from './components/Navbar';
-import Name from './components/Name';
-import HorizontalScroll from './components/HorizontalScroll';
-import Projects from './components/Projects';
-import SkillList from './components/SkillList';
-import Socials from './components/Socials';
-import Clock from './components/Clock';
-import ScrollProgress from './components/ScrollProgress';
-
-const App = () => {
-  return (
-    <React.StrictMode>
-      <Navbar />
-      <Clock />
-      <ScrollProgress />
-      <Name />
-      <HorizontalScroll />
-      <Projects />
-      <SkillList type="languages" />
-      <SkillList type="fworks" />
-      <Socials />
-      <Footer />
-    </React.StrictMode>
-  );
-};
-
-const Footer = () => {
-  const year = new Date().getFullYear();
-  return <footer>© {year} Sai Sumakar</footer>;
-};
-
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  ReactDOM.createRoot(rootElement).render(<App />);
-}
-
-export default App;*/

@@ -24,13 +24,14 @@ function Clock() {
   );
   const clockStyle = {
     fontSize: '1rem',
-    fontFamily: 'Faculty Glyphic, sans-serif',
+    fontFamily: "Chewie, sans-serif",
     textAlign: 'center',
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     width: 'fit-content',
-    padding: '0 0 0 5px'
+    padding: '0 0 0 5px',
+    letterSpacing: '0.05rem',
   }
 
   return (
@@ -40,25 +41,5 @@ function Clock() {
   )
 
 };
-
-// function updateTime() {
-//   const now = new Date();
-//   const hours = now.getHours().toString().padStart(2, '0');
-//   const minutes = now.getMinutes().toString().padStart(2, '0');
-
-//   const date = now.getDate().toString()
-//   const formattedTime = `${date}${hours}:${minutes}`;
-  
-//   document.getElementById('clock').textContent = formattedTime;
-
-//   // Calculate the exact time until the next second
-//   const nextSecond = new Date(now.getTime() + 1000);
-//   nextSecond.setMilliseconds(0); // Align to the start of the next second
-//   const delay = nextSecond.getTime() - now.getTime();
-
-//   setTimeout(() => requestAnimationFrame(updateTime), delay);
-// }
-
-// window.onload = updateTime; // Start immediately
 
 export default Clock;
