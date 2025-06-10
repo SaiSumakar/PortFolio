@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
 @font-face {
   font-family: "Louis Walter";
-  src: url("../public/fonts/louis-walter-font/LouisWalterRegular-yYjJV.ttf") format("opentype");
+  src: url("/fonts/louis-walter-font/LouisWalterRegular-yYjJV.ttf") format("opentype");
   font-weight: 400;
 }
 @font-face{
   font-family: "Chewie";
-  src: url("../public/fonts/chewie/ChewieDEMO-Regular.otf") format("opentype");
+  src: url("/fonts/chewie/ChewieDEMO-Regular.otf") format("opentype");
   font-weight: 400;
 }
 
