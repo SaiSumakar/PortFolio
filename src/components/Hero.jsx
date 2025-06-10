@@ -21,7 +21,7 @@ function Hero(){
         </div>
       </div>
       <div className="hero-image">
-        <img src="./public/assets/my.jpg" alt="Author Image"/>
+        <img src="./assets/my.jpg" alt="Author Image"/>
       </div>
     </ReactLenis>
   )

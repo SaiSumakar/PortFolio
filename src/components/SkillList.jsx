@@ -1,22 +1,22 @@
 import PropTypes from "prop-types";
 
 const langsImages = [
-  { name: "C", path: "./public/assets/c.png" },
-  { name: "C++", path: "./public/assets/cpp.png" },
-  { name: "Python", path: "./public/assets/python.png" },
-  { name: "HTML", path: "./public/assets/html.png" },
-  { name: "JavaScript", path: "./public/assets/js.png" },
+  { name: "C", path: "./assets/c.png" },
+  { name: "C++", path: "./assets/cpp.png" },
+  { name: "Python", path: "./assets/python.png" },
+  { name: "HTML", path: "./assets/html.png" },
+  { name: "JavaScript", path: "./assets/js.png" },
 ];
 
 const fworksImages = [
-  { name: "CSS", path: "./public/assets/css.png" },
-  { name: "PyTorch", path: "./public/assets/pytorch.png" },
-  { name: "TensorFlow", path: "./public/assets/tf.png" },
-  { name: "NumPy", path: "./public/assets/numpy.png" },
-  { name: "pandas", path: "./public/assets/pandas.png" },
-  { name: "Matplotlib", path: "./public/assets/plt.png" },
-  { name: "Node.js", path: "./public/assets/nodejs.png" },
-  { name: "React.js", path: "./public/assets/react.png" },
+  { name: "CSS", path: "./assets/css.png" },
+  { name: "PyTorch", path: "./assets/pytorch.png" },
+  { name: "TensorFlow", path: "./assets/tf.png" },
+  { name: "NumPy", path: "./assets/numpy.png" },
+  { name: "pandas", path: "./assets/pandas.png" },
+  { name: "Matplotlib", path: "./assets/plt.png" },
+  { name: "Node.js", path: "./assets/nodejs.png" },
+  { name: "React.js", path: "./assets/react.png" },
 ];
 
 function displayList(list, typeSkill) {
