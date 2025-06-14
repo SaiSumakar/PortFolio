@@ -10,6 +10,7 @@ function Navlink(props) {
     padding: '2px 25px',
     fontWeight: isHovered && 'bold',
   }
+  const isResume = props.name === "RESUME";
 
   function onHover(){
     setHover(true)
@@ -21,7 +22,7 @@ function Navlink(props) {
 
   return (
     <div onMouseOver={onHover} onMouseOut={offHover} className="hovered"> 
-      <a href={props.to} style={linkStyle} data-link={props.text} >{props.text} </a> 
+      <a href={props.to} style={linkStyle} data-link={props.text} target={isResume ? "_blank" : undefined}>{props.text} </a> 
     </div>
   )
 }
